@@ -1,6 +1,6 @@
 package com.soloxis.todo.controllers;
 
-import java.sql.Timestamp;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.soloxis.todo.models.Todo;
-import com.soloxis.todo.repositories.TodoRepository;
+
 import com.soloxis.todo.service.TodoService;
 
 @RestController
@@ -68,6 +68,6 @@ public class TodoController {
 		result.put("success", true);
 		
 		
-		return null;
+		return result;
 	}
 }

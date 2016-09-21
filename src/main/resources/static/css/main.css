@@ -2,3 +2,12 @@
 	text-decoration: line-through;
 	color: grey;
 }
+
+#container{
+	width : 50%;
+	margin : auto;
+	background-color : #aed0e9;
+	padding : 20px;
+	border : solid 1px #6eaad8;
+	border-radius : 10px;
+}
