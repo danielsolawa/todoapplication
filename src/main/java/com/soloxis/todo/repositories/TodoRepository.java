@@ -13,7 +13,9 @@ public interface TodoRepository extends Repository<Todo, Long> {
 	
 	List<Todo> findAll();
 	Todo save(Todo todo);
-	
+	Todo findById(long id);
+	Long deleteById(long id);
+	List<Todo> deleteAll();
 	
 	@Modifying
 	@Query("UPDATE Todo t SET t.done = :done WHERE t.id = :id")

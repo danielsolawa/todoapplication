@@ -2,22 +2,55 @@ var application = angular.module('todoApp', []);
 application.controller('TodoController', ['$http', function($http){
 	var todo = this;
 	todo.tasks = [];
-	todo.check = false;
 	
-	$http.get('/api/getall').success(function(data){
-		todo.tasks = data;
-	});
+	
+	var getData = 
+		$http.get('/api').success(function(data){
+			todo.tasks = data;
+		});
+	
 	
 	todo.updateDone = function(updatedTodo){
-		$http.post('/api/update', {done : updatedTodo.done, id : updatedTodo.id}).success(function(data){
+		$http.put('/api/' + updatedTodo.id, updatedTodo).success(function(data){
 			
 		});
 	};
 	
+	todo.remaining = function(){
+		var count = 0;
+		angular.forEach(todo.tasks, function(todo){
+			count += todo.done ? 0 : 1;
+		});
+		return count;
+	};
+	
+	todo.deleteById = function(todoToDelete){
+		$http.delete('/api/' + todoToDelete.id, todoToDelete).success(function(data){
+			$http.get('/api').success(function(data){
+				todo.tasks = data;
+			});
+		});
+	};
+	
+	todo.deleteAll = function(){
+		$http.delete('/api').success(function(data){
+			$http.get('/api').success(function(data){
+				todo.tasks = data;
+			});
+		});
+	};
+	
+
+	
 	todo.addTodo = function(){
+		
 		todo.date = Date.now();
-		$http.post('/api/save', {text: todo.text, done : false}).success(function(data){
-			$http.get('/api/getall').success(function(data){
+		var sendTodo = {'text': todo.text, 'done': false};
+		
+	
+		$http.post('/api', sendTodo).success(function(data){
+			todo.text = '';
+			$http.get('/api').success(function(data){
 				todo.tasks = data;
 			});
 		});

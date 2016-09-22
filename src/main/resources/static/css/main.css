@@ -3,11 +3,42 @@
 	color: grey;
 }
 
+.delete{
+	color: red;
+	
+}
+
+.date{
+	font-weight: bold;
+}
+
 #container{
 	width : 50%;
 	margin : auto;
-	background-color : #aed0e9;
+	background-color : #b5d9ca;
 	padding : 20px;
-	border : solid 1px #6eaad8;
+	border : solid 1px #96cab4;
 	border-radius : 10px;
+}
+
+.formContainer{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.todoDiv{
+	margin-top: 5px;
+}
+
+.customButton{
+	background-color: #698d7d;
+	border: solid 1px black;
+	color: #eaf4f0;
+}
+
+.deleteButton{
+	background-color: #698d7d;
+	border: solid 1px black;
+	color: white;
+	margin-left : 5px;
 }
