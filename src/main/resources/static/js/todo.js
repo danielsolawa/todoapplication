@@ -2,7 +2,7 @@ var application = angular.module('todoApp', []);
 application.controller('TodoController', ['$http', function($http){
 	var todo = this;
 	todo.tasks = [];
-	
+	todo.text = 'What need to be done?';
 	
 	var getData = 
 		$http.get('/api').success(function(data){

@@ -3,9 +3,9 @@ package com.soloxis.todo.controllers;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
+
 import java.util.List;
-import java.util.Map;
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,7 +48,7 @@ public class TodoController {
 		HttpHeaders httpHeaders =  new HttpHeaders();
 		httpHeaders.setLocation(ucBuilder.path("/api/{id}").buildAndExpand(todo.getId()).toUri());
 		
-		
+		LOGGER.debug("Todo was created");
 		
 		return new ResponseEntity<Void>(httpHeaders, HttpStatus.CREATED);
 	}
@@ -61,6 +61,7 @@ public class TodoController {
 			System.out.println("No todos were found");
 			return new ResponseEntity<List<Todo>>(HttpStatus.NO_CONTENT);
 		}
+		LOGGER.debug("Todos were fetched");
 		
 		return new ResponseEntity<List<Todo>>(todos, HttpStatus.OK);
 	}
@@ -74,7 +75,7 @@ public class TodoController {
 		if(currentTodo == null){
 			return new ResponseEntity<Todo>(HttpStatus.NOT_FOUND);
 		}
-		
+		LOGGER.debug("Todo updated successfully");
 		todoService.update(id, todo.isDone());
 		
 		return new ResponseEntity<Todo>(HttpStatus.OK);
